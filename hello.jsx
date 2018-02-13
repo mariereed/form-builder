@@ -17,26 +17,39 @@ class Tabs extends React.Component {
     }
 }
 
+
 class Input extends React.Component {
     render() {
-        return <p>This is an Input!</p>
+        return <div className="section">
+        			<div className="input">
+        				<p>This is an Input!</p>
+        			</div>
+        			<Subinput />
+        			<Subinput />
+        		</div>
     }
 }
 
+
 class Subinput extends React.Component {
     render() {
-        return <p>This is a Subinput!</p>
+        return <div className="subinput">
+        			<p>This is a Subinput!</p>
+        		</div>
     }
 }
+
+
 class FormDisplay extends React.Component {
     render() {
         return <div className="formDisplay">
         			<p>Hiiiii this is the form display</p>
         			<Input />
-        			<Subinput />
+        			<Input />
         		</div>
     }
 }
+
 
 class Container extends React.Component {
     render() {
@@ -46,6 +59,7 @@ class Container extends React.Component {
         		</div>
     }
 }
+
 
 ReactDOM.render(
     <Container />,

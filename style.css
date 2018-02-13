@@ -2,6 +2,21 @@
 	border: 1px solid black;
 }
 
-.tabs {
-	border: black;
+.section {
+	margin: 20px;
+}
+
+.input {
+	border: 1px solid black;
+	width: 400px;
+	padding: 5px;
+}
+
+.subinput {
+	border: 1px solid black;
+	width: 400px;
+	margin-left: 10%;
+	margin-top: 5px;
+	
+	padding: 5px;
 }
