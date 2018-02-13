@@ -1,10 +1,10 @@
 class Hello extends React.Component {
     render() {
-    return <p>Hi World!</p>
+        return <p>Hello, World!</p>
     }
 }
 
-ReactDOM.render (
+ReactDOM.render(
     <Hello />,
     document.getElementById("root")
-;
+);
