@@ -9,11 +9,11 @@ class Tabs extends React.Component {
 	}
 
     render() {
-        return <div className="tabs">
-				<button onClick={(e) => this.handleClick(e)}>This Is A Tab!</button>
-				<button onClick={(e) => this.handleClick(e)}>This is a tab too</button>
-				<button onClick={(e) => this.handleClick(e)}>this is also a tab</button>
-			   </div>
+		return <div className="tabs">
+					<button onClick={(e) => this.handleClick(e)}>This Is A Tab!</button>
+					<button onClick={(e) => this.handleClick(e)}>This is a tab too</button>
+					<button onClick={(e) => this.handleClick(e)}>this is also a tab</button>
+				</div>
     }
 }
 
@@ -30,6 +30,18 @@ class Input extends React.Component {
     }
 }
 
+class AddInput extends React.Component {
+	handleClick(e) {
+		this.props.callback();
+	}
+
+	render() {
+		return <div className="addInput">
+					<button onClick={(e) => this.handleClick(e)}>Add Input</button>
+				</div>
+	}
+}
+
 
 class Subinput extends React.Component {
     render() {
@@ -41,11 +53,22 @@ class Subinput extends React.Component {
 
 
 class FormDisplay extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			addInputClicked: false
+		}
+	}
+
     render() {
         return <div className="formDisplay">
         			<p>Hiiiii this is the form display</p>
-        			<Input />
-        			<Input />
+        			{
+        				this.state.addInputClicked?
+        				<Input /> : <p>It claims to not be clicked</p>
+
+        			}
+        			<AddInput callback={()=>this.setState({addInputClicked: true})}/>
         		</div>
     }
 }
