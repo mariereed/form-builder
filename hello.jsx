@@ -3,15 +3,30 @@
 class Node {
 	constructor(data, children=null) {
 		// Not sure what to put here
-		self.data = data;
-		self.children = children || [];
+		this.data = data;
+		this.children = children || [];
 	}
+	// to append children --> object.push('childName')
 }
 
 
+// create objects when new input/subinput is added
 
+class Input {
+	constructor(question, questionType) {
+		this.question = question;
+		this.questionType = questionType;
+	}
+}
 
-
+class SubInput {
+	constructor(question, questionType, conditional, conditionValue) {
+		this.question = question;
+		this.questionType = questionType;
+		this.conditional = conditional;
+		this.conditionValue = conditionValue;
+	}
+}
 
 
 
