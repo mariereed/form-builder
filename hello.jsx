@@ -1,3 +1,20 @@
+// Create the node class for the tree
+
+class Node {
+	constructor(data, children=null) {
+		// Not sure what to put here
+		self.data = data;
+		self.children = children || [];
+	}
+}
+
+
+
+
+
+
+
+
 class Tabs extends React.Component {
     constructor(props) {
     super(props);
