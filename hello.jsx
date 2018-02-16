@@ -1,6 +1,11 @@
-// Create the node class for the tree
+// Tree and node classes
+class FormTree {
+	constructor(root) {
+		this.root = root;
+	}
+}
 
-class Node {
+class FormNode {
 	constructor(data, children=null) {
 		// Not sure what to put here
 		this.data = data;
@@ -50,19 +55,30 @@ class Tabs extends React.Component {
 }
 
 
-class Input extends React.Component {
+class InputBlock extends React.Component {
     render() {
         return <div className="section">
         			<div className="input">
         				<p>This is an Input!</p>
+
+        				<form>
+        					Question: <input type='text' name='question'/>
+        					Type: 
+        					<select name='questionType'>
+        						<option value='text'>Text</option>
+        						<option value='number'>Number</option>
+        						<option value='yes/no'>Yes/No</option>
+        					</select>
+        				</form>
+
         			</div>
-        			<Subinput />
-        			<Subinput />
+        			<SubinputBlock />
         		</div>
     }
 }
 
 class AddInput extends React.Component {
+	// This is the actual button component
 	handleClick(e) {
 		this.props.callback();
 	}
@@ -75,10 +91,27 @@ class AddInput extends React.Component {
 }
 
 
-class Subinput extends React.Component {
+class SubinputBlock extends React.Component {
     render() {
         return <div className="subinput">
         			<p>This is a Subinput!</p>
+        			<form>
+        				Condition: 
+        				<select name='conditional'>
+    						<option value='equals'>Equals</option>
+    						<option value='greaterThan'>Greater Than</option>
+    						<option value='lessThan'>Less Than</option>
+    					</select>
+    					<input type='text' name='conditionValue'/>
+    					<br/>
+    					Question: <input type='text' name='question'/>
+    					Type: 
+    					<select name='questionType'>
+    						<option value='text'>Text</option>
+    						<option value='number'>Number</option>
+    						<option value='yes/no'>Yes/No</option>
+    					</select>
+    				</form>
         		</div>
     }
 }
@@ -97,7 +130,7 @@ class FormDisplay extends React.Component {
         			<p>Hiiiii this is the form display</p>
         			{
         				this.state.addInputClicked?
-        				<Input /> : <p>It claims to not be clicked</p>
+        				<InputBlock /> : <p>It claims to not be clicked</p>
 
         			}
         			<AddInput callback={()=>this.setState({addInputClicked: true})}/>
