@@ -145,19 +145,29 @@ class FormDisplay extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			addInputClicked: false
+            childrenOfRoot: 0
 		}
 	}
 
+	addInputBlock() {
+		this.setState()
+	}
+
     render() {
+
+        let inputArray = []
+        for (let i=0; i < this.state.childrenOfRoot; ++i) {
+            inputArray.push(<InputBlock />)
+        }
+        console.log(inputArray)
         return <div className="formDisplay">
         			<p>Hiiiii this is the form display</p>
         			{
-        				this.state.addInputClicked?
-        				<InputBlock /> : <p>It claims to not be clicked</p>
+        				this.state.childrenOfRoot?
+        				inputArray : <p>It claims to not be clicked</p>
 
         			}
-        			<AddInput callback={()=>this.setState({addInputClicked: true})}/>
+        			<AddInput callback={()=>this.setState({childrenOfRoot: this.state.childrenOfRoot + 1})}/>
         		</div>
     }
 }
