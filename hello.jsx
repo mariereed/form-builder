@@ -191,10 +191,10 @@ class FormDisplay extends React.Component {
         }
 
         return <div className="formDisplay">
-        			<p>Hiiiii this is the form display</p>
+        			<p>This is the form display</p>
         			{
         				this.state.childrenOfRoot?
-        				inputArray : <p>It claims to not be clicked</p>
+        				inputArray : null
 
         			}
         			<AddInput callback={()=>this.setState({childrenOfRoot: this.state.childrenOfRoot + 1})}/>
