@@ -34,7 +34,7 @@ class SubInput {
 }
 
 
-
+// Tabs component
 class Tabs extends React.Component {
     constructor(props) {
     super(props);
@@ -54,8 +54,19 @@ class Tabs extends React.Component {
     }
 }
 
-
+// Component for the physical input block
 class InputBlock extends React.Component {
+
+	handleAdd(e) {
+	// functionality: Add a new sub-input!
+    // this.props.callback(e.target.id);
+	}
+
+	handleDelete(e) {
+	// functionality: Delete this block!
+    // this.props.callback(e.target.id);
+	}
+
     render() {
         return <div className="section">
         			<div className="input">
@@ -70,6 +81,9 @@ class InputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
+        				<button onClick={(e) => this.handleAdd(e)}>Add SubInput</button>
+        				<button onClick={(e) => this.handleDelete(e)}>Delete</button>
+
 
         			</div>
         			<SubinputBlock />
@@ -77,8 +91,8 @@ class InputBlock extends React.Component {
     }
 }
 
+// This is the actual Add Input button component
 class AddInput extends React.Component {
-	// This is the actual button component
 	handleClick(e) {
 		this.props.callback();
 	}
@@ -90,7 +104,7 @@ class AddInput extends React.Component {
 	}
 }
 
-
+// Component for the physical subinput block
 class SubinputBlock extends React.Component {
     render() {
         return <div className="subinput">
@@ -116,7 +130,7 @@ class SubinputBlock extends React.Component {
     }
 }
 
-
+// Component for the entire form
 class FormDisplay extends React.Component {
 	constructor(props) {
 		super(props);
@@ -138,7 +152,7 @@ class FormDisplay extends React.Component {
     }
 }
 
-
+// Component for the entire page
 class Container extends React.Component {
     render() {
         return <div>
