@@ -144,7 +144,7 @@ class SubinputBlock extends React.Component {
         for ( let i = 0; i < this.state.nodeChildren; ++i) {
             inputArray.push(<SubinputBlock type={this.state.questionType}/>);
         }
-
+        
         if (this.props.type == 'text' ) {
             return <div className="section">
                 <div className="subinput">
