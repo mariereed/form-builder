@@ -165,7 +165,7 @@ class SubinputBlock extends React.Component {
                             <option value='yes/no'>Yes/No</option>
                         </select>
                     </form>
-                    <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                    <AddSubInput selectedType={this.state.questionType} callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
                     <DeleteInput />
                 </div>
                 {
@@ -198,7 +198,7 @@ class SubinputBlock extends React.Component {
                             <option value='yes/no'>Yes/No</option>
                         </select>
                     </form>
-                    <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                    <AddSubInput selectedType={this.state.questionType} callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
                     <DeleteInput />
                 </div>
                 {
@@ -230,7 +230,7 @@ class SubinputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
-                        <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                        <AddSubInput selectedType={this.state.questionType} callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
                         <DeleteInput />
             		</div>
                     {
