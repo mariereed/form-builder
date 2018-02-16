@@ -1,39 +1,3 @@
-// Tree and node classes
-class FormTree {
-	constructor(root) {
-		this.root = root;
-	}
-}
-
-class FormNode {
-	constructor(data, children=null) {
-		// Not sure what to put here
-		this.data = data;
-		this.children = children || [];
-	}
-	// to append children --> object.push('childName')
-}
-
-
-// create objects when new input/subinput is added
-
-class Input {
-	constructor(question, questionType) {
-		this.question = question;
-		this.questionType = questionType;
-	}
-}
-
-class SubInput {
-	constructor(question, questionType, conditional, conditionValue) {
-		this.question = question;
-		this.questionType = questionType;
-		this.conditional = conditional;
-		this.conditionValue = conditionValue;
-	}
-}
-
-
 // Tabs component
 class Tabs extends React.Component {
     constructor(props) {
@@ -43,6 +7,7 @@ class Tabs extends React.Component {
 
 	handleClick(e) {
     // this.props.callback(e.target.id);
+    // Not yet made the tabs functional
 	}
 
     render() {
@@ -60,13 +25,28 @@ class InputBlock extends React.Component {
         super(props);
         this.state = {
             nodeChildren: 0,
+            questionType: '',
+            question: '',
         }
+        this.handleInputType = this.handleInputType.bind(this);
+        this.handleInputQuestion = this.handleInputQuestion.bind(this);
     }
+
+    handleInputType(e) {
+        this.setState({questionType: e.target.value});
+        console.log(this.state.questionType);
+    }
+
+    handleInputQuestion(e) {
+        this.setState({question: e.target.value});
+        console.log(this.state.question);
+    }
+
     render() {
 
         let inputArray = []
         for ( let i = 0; i < this.state.nodeChildren; ++i) {
-            inputArray.push(<SubinputBlock />);
+            inputArray.push(<SubinputBlock type={this.state.questionType}/>);
         }
 
         return <div className="section">
@@ -74,10 +54,11 @@ class InputBlock extends React.Component {
         				<p>This is an Input!</p>
 
         				<form>
-        					Question: <input type='text' name='question'/>
+        					Question: <input type='text' name='question' value={this.state.question} onChange={this.handleInputQuestion}/>
         					Type: 
-        					<select name='questionType'>
-        						<option value='text'>Text</option>
+        					<select name='questionType' value={this.state.questionType} onChange={this.handleInputType}>
+        						<option value=''>--</option>
+                                <option value='text'>Text</option>
         						<option value='number'>Number</option>
         						<option value='yes/no'>Yes/No</option>
         					</select>
@@ -145,10 +126,15 @@ class SubinputBlock extends React.Component {
 
         return <div className="section">
                 <div className="subinput">
-        			<p>This is a Sub-Input!</p>
+        			<p>This is a Sub-Input of type: {this.props.type}!</p>
+                    {
+                        this.props.type == 'text'?
+                        console.log(true): console.log(false)
+                    }
         			<form>
         				Condition: 
         				<select name='conditional'>
+                            <option value=''>--</option>
     						<option value='equals'>Equals</option>
     						<option value='greaterThan'>Greater Than</option>
     						<option value='lessThan'>Less Than</option>
@@ -158,6 +144,7 @@ class SubinputBlock extends React.Component {
     					Question: <input type='text' name='question'/>
     					Type: 
     					<select name='questionType'>
+                            <option value=''>--</option>
     						<option value='text'>Text</option>
     						<option value='number'>Number</option>
     						<option value='yes/no'>Yes/No</option>
