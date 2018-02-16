@@ -56,6 +56,12 @@ class Tabs extends React.Component {
 
 // Component for the physical input block
 class InputBlock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            someKeyHere: valueHere
+        }
+    }
     render() {
         return <div className="section">
         			<div className="input">
@@ -70,12 +76,9 @@ class InputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
-        				<AddSubInput />
-        				<DeleteInput />
-
-
+        				<AddSubInput callback={()=>this.setState({someKeyHere: valueHere})}/>
+        				<DeleteInput callback={()=>this.setState({someKeyHere: valueHere})}/>
         			</div>
-        			<SubinputBlock />
         		</div>
     }
 }
@@ -149,17 +152,13 @@ class FormDisplay extends React.Component {
 		}
 	}
 
-	addInputBlock() {
-		this.setState()
-	}
-
     render() {
 
         let inputArray = []
         for (let i=0; i < this.state.childrenOfRoot; ++i) {
             inputArray.push(<InputBlock />)
         }
-        console.log(inputArray)
+
         return <div className="formDisplay">
         			<p>Hiiiii this is the form display</p>
         			{
