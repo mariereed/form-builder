@@ -59,10 +59,16 @@ class InputBlock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            someKeyHere: valueHere
+            nodeChildren: 0,
         }
     }
     render() {
+
+        let inputArray = []
+        for ( let i = 0; i < this.state.nodeChildren; ++i) {
+            inputArray.push(<SubinputBlock />);
+        }
+
         return <div className="section">
         			<div className="input">
         				<p>This is an Input!</p>
@@ -76,9 +82,13 @@ class InputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
-        				<AddSubInput callback={()=>this.setState({someKeyHere: valueHere})}/>
-        				<DeleteInput callback={()=>this.setState({someKeyHere: valueHere})}/>
+        				<AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+        				<DeleteInput />
         			</div>
+                    {
+                        this.state.nodeChildren?
+                        inputArray : null
+                    }
         		</div>
     }
 }
