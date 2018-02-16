@@ -63,7 +63,7 @@ class InputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
-        				<AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+        				<AddSubInput selectedType={this.state.questionType} callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
         				<DeleteInput />
         			</div>
                     {
@@ -76,7 +76,12 @@ class InputBlock extends React.Component {
 
 class AddSubInput extends React.Component {
 	handleClick(e) {
-		this.props.callback();
+        // if type not selected... do not allow to proceed
+        if (this.props.selectedType != '') {
+            this.props.callback();
+        } else {
+            alert('Please selet a Type');
+        }
 	}
 
 	render() {
@@ -114,14 +119,30 @@ class SubinputBlock extends React.Component {
         super(props);
         this.state = {
             nodeChildren: 0,
+            questionType: '',
+            question: '',
         }
+        this.handleInputType = this.handleInputType.bind(this);
+        this.handleInputQuestion = this.handleInputQuestion.bind(this);
     }
+
+    handleInputType(e) {
+        this.setState({questionType: e.target.value});
+        console.log(this.state.questionType);
+    }
+
+    handleInputQuestion(e) {
+        this.setState({question: e.target.value});
+        console.log(this.state.question);
+    }
+
+    
 
     render() {
 
         let inputArray = []
         for ( let i = 0; i < this.state.nodeChildren; ++i) {
-            inputArray.push(<SubinputBlock />);
+            inputArray.push(<SubinputBlock type={this.state.questionType}/>);
         }
 
         if (this.props.type == 'text' ) {
@@ -135,9 +156,9 @@ class SubinputBlock extends React.Component {
                         </select>
                         <input type='text' name='conditionValue'/>
                         <br/>
-                        Question: <input type='text' name='question'/>
+                        Question: <input type='text' name='question' value={this.state.question} onChange={this.handleInputQuestion}/>
                         Type: 
-                        <select name='questionType'>
+                        <select name='questionType' value={this.state.questionType} onChange={this.handleInputType}>
                             <option value=''>--</option>
                             <option value='text'>Text</option>
                             <option value='number'>Number</option>
