@@ -124,40 +124,100 @@ class SubinputBlock extends React.Component {
             inputArray.push(<SubinputBlock />);
         }
 
-        return <div className="section">
+        if (this.props.type == 'text' ) {
+            return <div className="section">
                 <div className="subinput">
-        			<p>This is a Sub-Input of type: {this.props.type}!</p>
-                    {
-                        this.props.type == 'text'?
-                        console.log(true): console.log(false)
-                    }
-        			<form>
-        				Condition: 
-        				<select name='conditional'>
+                    <p>This is a Sub-Input of type: {this.props.type}!</p>
+                    <form>
+                        Condition: 
+                        <select name='conditional'>
+                            <option value='equals'>Equals</option>
+                        </select>
+                        <input type='text' name='conditionValue'/>
+                        <br/>
+                        Question: <input type='text' name='question'/>
+                        Type: 
+                        <select name='questionType'>
                             <option value=''>--</option>
-    						<option value='equals'>Equals</option>
-    						<option value='greaterThan'>Greater Than</option>
-    						<option value='lessThan'>Less Than</option>
-    					</select>
-    					<input type='text' name='conditionValue'/>
-    					<br/>
-    					Question: <input type='text' name='question'/>
-    					Type: 
-    					<select name='questionType'>
-                            <option value=''>--</option>
-    						<option value='text'>Text</option>
-    						<option value='number'>Number</option>
-    						<option value='yes/no'>Yes/No</option>
-    					</select>
-    				</form>
+                            <option value='text'>Text</option>
+                            <option value='number'>Number</option>
+                            <option value='yes/no'>Yes/No</option>
+                        </select>
+                    </form>
                     <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
                     <DeleteInput />
-        		</div>
+                </div>
                 {
                     this.state.nodeChildren?
                     inputArray : null
                 }
             </div>
+        }
+
+        if (this.props.type == 'yes/no' ) {
+            return <div className="section">
+                <div className="subinput">
+                    <p>This is a Sub-Input of type: {this.props.type}!</p>
+                    <form>
+                        Condition: 
+                        <select name='conditional'>
+                            <option value='equals'>Equals</option>
+                        </select>
+                        <select name='conditionValue'>
+                            <option value='yes'>Yes</option>
+                            <option value='no'>No</option>
+                        </select>
+                        <br/>
+                        Question: <input type='text' name='question'/>
+                        Type: 
+                        <select name='questionType'>
+                            <option value=''>--</option>
+                            <option value='text'>Text</option>
+                            <option value='number'>Number</option>
+                            <option value='yes/no'>Yes/No</option>
+                        </select>
+                    </form>
+                    <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                    <DeleteInput />
+                </div>
+                {
+                    this.state.nodeChildren?
+                    inputArray : null
+                }
+            </div>
+        }
+        if (this.props.type == 'number') {
+            return <div className="section">
+                    <div className="subinput">
+            			<p>This is a Sub-Input of type: {this.props.type}!</p>
+            			<form>
+            				Condition: 
+            				<select name='conditional'>
+                                <option value=''>--</option>
+        						<option value='equals'>Equals</option>
+        						<option value='greaterThan'>Greater Than</option>
+        						<option value='lessThan'>Less Than</option>
+        					</select>
+        					<input type='text' name='conditionValue'/>
+        					<br/>
+        					Question: <input type='text' name='question'/>
+        					Type: 
+        					<select name='questionType'>
+                                <option value=''>--</option>
+        						<option value='text'>Text</option>
+        						<option value='number'>Number</option>
+        						<option value='yes/no'>Yes/No</option>
+        					</select>
+        				</form>
+                        <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                        <DeleteInput />
+            		</div>
+                    {
+                        this.state.nodeChildren?
+                        inputArray : null
+                    }
+                </div>
+        }
     }
 }
 
