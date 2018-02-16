@@ -56,17 +56,6 @@ class Tabs extends React.Component {
 
 // Component for the physical input block
 class InputBlock extends React.Component {
-
-	handleAdd(e) {
-	// functionality: Add a new sub-input!
-    // this.props.callback(e.target.id);
-	}
-
-	handleDelete(e) {
-	// functionality: Delete this block!
-    // this.props.callback(e.target.id);
-	}
-
     render() {
         return <div className="section">
         			<div className="input">
@@ -81,14 +70,35 @@ class InputBlock extends React.Component {
         						<option value='yes/no'>Yes/No</option>
         					</select>
         				</form>
-        				<button onClick={(e) => this.handleAdd(e)}>Add SubInput</button>
-        				<button onClick={(e) => this.handleDelete(e)}>Delete</button>
+        				<AddSubInput />
+        				<DeleteInput />
 
 
         			</div>
         			<SubinputBlock />
         		</div>
     }
+}
+
+class AddSubInput extends React.Component {
+	handleClick(e) {
+		this.props.callback();
+	}
+
+	render() {
+		return <button onClick={(e) => this.handleClick(e)}>Add Sub-Input</button>
+
+	}
+}
+
+class DeleteInput extends React.Component {
+	handleClick(e) {
+		this.props.callback();
+	}
+
+	render() {
+		return <button onClick={(e) => this.handleClick(e)}>Delete</button>
+	}
 }
 
 // This is the actual Add Input button component
