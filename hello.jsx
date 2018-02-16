@@ -129,9 +129,23 @@ class AddInput extends React.Component {
 
 // Component for the physical subinput block
 class SubinputBlock extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            nodeChildren: 0,
+        }
+    }
+
     render() {
-        return <div className="subinput">
-        			<p>This is a Subinput!</p>
+
+        let inputArray = []
+        for ( let i = 0; i < this.state.nodeChildren; ++i) {
+            inputArray.push(<SubinputBlock />);
+        }
+
+        return <div className="section">
+                <div className="subinput">
+        			<p>This is a Sub-Input!</p>
         			<form>
         				Condition: 
         				<select name='conditional'>
@@ -149,7 +163,14 @@ class SubinputBlock extends React.Component {
     						<option value='yes/no'>Yes/No</option>
     					</select>
     				</form>
+                    <AddSubInput callback={()=>this.setState({nodeChildren: this.state.nodeChildren +1})}/>
+                    <DeleteInput />
         		</div>
+                {
+                    this.state.nodeChildren?
+                    inputArray : null
+                }
+            </div>
     }
 }
 
