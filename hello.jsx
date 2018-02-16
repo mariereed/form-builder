@@ -148,7 +148,7 @@ class SubinputBlock extends React.Component {
         if (this.props.type == 'text' ) {
             return <div className="section">
                 <div className="subinput">
-                    <p>This is a Sub-Input of type: {this.props.type}!</p>
+                    <p>This is a Sub-Input of parent type: {this.props.type}!</p>
                     <form>
                         Condition: 
                         <select name='conditional'>
@@ -178,20 +178,21 @@ class SubinputBlock extends React.Component {
         if (this.props.type == 'yes/no' ) {
             return <div className="section">
                 <div className="subinput">
-                    <p>This is a Sub-Input of type: {this.props.type}!</p>
+                    <p>This is a Sub-Input of parent type: {this.props.type}!</p>
                     <form>
                         Condition: 
                         <select name='conditional'>
                             <option value='equals'>Equals</option>
                         </select>
                         <select name='conditionValue'>
+                            <option value=''>--</option>
                             <option value='yes'>Yes</option>
                             <option value='no'>No</option>
                         </select>
                         <br/>
-                        Question: <input type='text' name='question'/>
+                        Question: <input type='text' name='question' value={this.state.question} onChange={this.handleInputQuestion}/>
                         Type: 
-                        <select name='questionType'>
+                        <select name='questionType' value={this.state.questionType} onChange={this.handleInputType}>
                             <option value=''>--</option>
                             <option value='text'>Text</option>
                             <option value='number'>Number</option>
@@ -210,7 +211,7 @@ class SubinputBlock extends React.Component {
         if (this.props.type == 'number') {
             return <div className="section">
                     <div className="subinput">
-            			<p>This is a Sub-Input of type: {this.props.type}!</p>
+            			<p>This is a Sub-Input of parent type: {this.props.type}!</p>
             			<form>
             				Condition: 
             				<select name='conditional'>
@@ -221,9 +222,9 @@ class SubinputBlock extends React.Component {
         					</select>
         					<input type='text' name='conditionValue'/>
         					<br/>
-        					Question: <input type='text' name='question'/>
+        					Question: <input type='text' name='question' value={this.state.question} onChange={this.handleInputQuestion}/>
         					Type: 
-        					<select name='questionType'>
+        					<select name='questionType' value={this.state.questionType} onChange={this.handleInputType}>
                                 <option value=''>--</option>
         						<option value='text'>Text</option>
         						<option value='number'>Number</option>
